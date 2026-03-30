@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng Của Bạn - NgTrieuPC</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-3">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="fas fa-microchip fs-3 me-2"></i>
+                <span class="fs-4 fw-bold">NgTrieuPC</span>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" style="border-color: rgba(255,255,255,0.5);">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                
+                <!-- Dropdown & Menu Trái -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bars me-1"></i> Phụ kiện PC
+                        </a>
+                        <ul class="dropdown-menu shadow" aria-labelledby="categoryDropdown">
+                            <li><a class="dropdown-item" href="#">CPU - Bộ vi xử lý</a></li>
+                            <li><a class="dropdown-item" href="#">VGA - Card màn hình</a></li>
+                            <li><a class="dropdown-item" href="#">Mainboard - Bo mạch chủ</a></li>
+                            <li><a class="dropdown-item" href="#">RAM - Bộ nhớ trong</a></li>
+                            <li><a class="dropdown-item" href="#">SSD / HDD - Ổ cứng</a></li>
+                            <li><a class="dropdown-item" href="#">PSU - Nguồn máy tính</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Vỏ Case & Tản nhiệt</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="uu_dai.html">Sự kiện ưu đãi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop_thongtin.html">Thông tin Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="lien_he.html">Liên hệ</a>
+                    </li>
+                </ul>
+
+                <!-- Thanh tìm kiếm -->
+                <form class="d-flex search-bar mx-lg-3 my-2 my-lg-0">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Nhập tên phụ kiện..." aria-label="Search">
+                        <button class="btn btn-light text-primary" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+
+                <!-- Menu Phải (User, Cart) -->
+                <ul class="navbar-nav ms-auto flex-row justify-content-center gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex flex-column align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-user fs-5"></i>
+                            <span style="font-size: 12px;">Đăng nhập</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex flex-column align-items-center position-relative active" href="cart.html">
+                            <i class="fas fa-shopping-cart fs-5"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">
+                                2
+                            </span>
+                            <span style="font-size: 12px;">Giỏ hàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal Đăng nhập (Giữ nguyên) -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold"><i class="fas fa-user-circle me-2"></i>Tài khoản NgTrieuPC</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    
+                    <ul class="nav nav-pills nav-justified mb-4" id="authTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active fw-bold" id="login-tab" data-bs-toggle="pill" data-bs-target="#login-pane" type="button" role="tab" aria-controls="login-pane" aria-selected="true">ĐĂNG NHẬP</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-bold" id="register-tab" data-bs-toggle="pill" data-bs-target="#register-pane" type="button" role="tab" aria-controls="register-pane" aria-selected="false">ĐĂNG KÝ</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="authTabsContent">
+                        
+                        <div class="tab-pane fade show active" id="login-pane" role="tabpanel" aria-labelledby="login-tab">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Email / Số điện thoại</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fas fa-envelope text-muted"></i></span>
+                                        <input type="email" class="form-control" placeholder="Nhập email..." required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Mật khẩu</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fas fa-lock text-muted"></i></span>
+                                        <input type="password" class="form-control" placeholder="Nhập mật khẩu..." required>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                                        <label class="form-check-label text-muted" for="rememberMe">Nhớ mật khẩu</label>
+                                    </div>
+                                    <a href="#" class="text-decoration-none text-primary">Quên mật khẩu?</a>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold">ĐĂNG NHẬP</button>
+                                
+                                <div class="text-center mt-4 text-muted">
+                                    <p class="mb-2">Hoặc đăng nhập bằng</p>
+                                    <button type="button" class="btn btn-outline-danger mx-1"><i class="fab fa-google"></i></button>
+                                    <button type="button" class="btn btn-outline-primary mx-1"><i class="fab fa-facebook-f"></i></button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="register-pane" role="tabpanel" aria-labelledby="register-tab">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Họ và tên *</label>
+                                    <input type="text" class="form-control" placeholder="Nhập họ và tên" required>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Email *</label>
+                                        <input type="email" class="form-control" placeholder="Nhập email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Số điện thoại *</label>
+                                        <input type="tel" class="form-control" placeholder="Nhập SĐT" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Mật khẩu *</label>
+                                    <input type="password" class="form-control" placeholder="Tối thiểu 6 ký tự" minlength="6" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Xác nhận mật khẩu *</label>
+                                    <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" minlength="6" required>
+                                </div>
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label small text-muted" for="terms">
+                                        Tôi đồng ý với <a href="#" class="text-decoration-none">Điều khoản dịch vụ</a> và <a href="#" class="text-decoration-none">Chính sách bảo mật</a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-success btn-lg w-100 fw-bold">TẠO TÀI KHOẢN</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MAIN CONTENT: GIỎ HÀNG ================= -->
+    <div class="container my-5">
+        
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Giỏ hàng của bạn</li>
+            </ol>
+        </nav>
+
+        <h2 class="fw-bold text-primary mb-4"><i class="fas fa-shopping-cart me-2"></i> Giỏ Hàng Của Bạn (2 sản phẩm)</h2>
+
+        <div class="row g-4">
+            
+            <!-- Cột trái: Danh sách sản phẩm -->
+            <div class="col-lg-8">
+                <div class="cart-wrapper">
+                    
+                    <!-- Tiêu đề cột (Ẩn trên mobile) -->
+                    <div class="cart-header d-none d-md-flex row">
+                        <div class="col-5">Sản phẩm</div>
+                        <div class="col-2 text-center">Đơn giá</div>
+                        <div class="col-2 text-center">Số lượng</div>
+                        <div class="col-2 text-end">Thành tiền</div>
+                        <div class="col-1 text-center"><i class="fas fa-trash"></i></div>
+                    </div>
+
+                    <!-- Item 1 -->
+                    <div class="cart-item row align-items-center">
+                        <!-- Ảnh & Tên (Mobile full width, Desktop 5 col) -->
+                        <div class="col-12 col-md-5 d-flex align-items-center mb-3 mb-md-0">
+                            <img src="https://placehold.co/150x150/e9ecef/495057?text=CPU+i7" alt="CPU Core i7" class="cart-item-img me-3">
+                            <div>
+                                <a href="#" class="cart-item-title d-block mb-1">CPU Intel Core i7 13700K</a>
+                                <span class="badge bg-danger small">Giảm 15%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Đơn giá -->
+                        <div class="col-4 col-md-2 text-md-center">
+                            <span class="d-md-none text-muted small">Đơn giá: </span>
+                            <span class="fw-semibold">9.500.000đ</span>
+                            <div class="text-muted text-decoration-line-through small d-md-block">11.200.000đ</div>
+                        </div>
+
+                        <!-- Số lượng -->
+                        <div class="col-4 col-md-2 d-flex justify-content-center">
+                            <div class="input-group input-group-sm qty-input-group">
+                                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-minus"></i></button>
+                                <input type="text" class="form-control text-center" value="1" readonly>
+                                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Thành tiền -->
+                        <div class="col-4 col-md-2 text-end">
+                            <span class="d-md-none text-muted small">Thành tiền: </span>
+                            <span class="fw-bold text-danger">9.500.000đ</span>
+                        </div>
+
+                        <!-- Nút Xóa -->
+                        <div class="col-12 col-md-1 d-flex justify-content-end justify-content-md-center mt-3 mt-md-0">
+                            <button class="btn-remove" title="Xóa sản phẩm">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="cart-item row align-items-center">
+                        <div class="col-12 col-md-5 d-flex align-items-center mb-3 mb-md-0">
+                            <img src="https://placehold.co/150x150/e9ecef/495057?text=RAM+16GB" alt="RAM Corsair" class="cart-item-img me-3">
+                            <div>
+                                <a href="#" class="cart-item-title d-block mb-1">RAM Corsair Vengeance RGB 16GB (2x8GB)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-4 col-md-2 text-md-center">
+                            <span class="d-md-none text-muted small">Đơn giá: </span>
+                            <span class="fw-semibold">1.350.000đ</span>
+                        </div>
+
+                        <div class="col-4 col-md-2 d-flex justify-content-center">
+                            <div class="input-group input-group-sm qty-input-group">
+                                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-minus"></i></button>
+                                <input type="text" class="form-control text-center" value="2" readonly>
+                                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-md-2 text-end">
+                            <span class="d-md-none text-muted small">Thành tiền: </span>
+                            <span class="fw-bold text-danger">2.700.000đ</span>
+                        </div>
+
+                        <div class="col-12 col-md-1 d-flex justify-content-end justify-content-md-center mt-3 mt-md-0">
+                            <button class="btn-remove" title="Xóa sản phẩm">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Nút tiếp tục mua sắm -->
+                    <div class="mt-4 pt-3 border-top">
+                        <a href="index.html" class="text-decoration-none text-primary fw-semibold">
+                            <i class="fas fa-arrow-left me-2"></i> Tiếp tục chọn sản phẩm
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Cột phải: Tổng tiền & Mã giảm giá -->
+            <div class="col-lg-4">
+                <div class="order-summary">
+                    <h5 class="fw-bold mb-4 border-bottom pb-3">Tóm Tắt Đơn Hàng</h5>
+                    
+                    <!-- Mã giảm giá -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold small text-muted">Mã giảm giá / Voucher</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Nhập mã (nếu có)">
+                            <button class="btn btn-outline-primary" type="button">Áp dụng</button>
+                        </div>
+                    </div>
+
+                    <!-- Dòng tiền -->
+                    <div class="summary-row">
+                        <span>Tạm tính (2 sản phẩm):</span>
+                        <span class="fw-semibold">12.200.000đ</span>
+                    </div>
+                    <div class="summary-row text-success">
+                        <span>Chiết khấu (Khuyến mãi):</span>
+                        <span>-0đ</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Phí vận chuyển:</span>
+                        <span class="text-muted small">Tính ở bước thanh toán</span>
+                    </div>
+                    
+                    <hr>
+
+                    <div class="summary-row align-items-center mt-3">
+                        <span class="fw-bold fs-5">Tổng cộng:</span>
+                        <span class="summary-total">12.200.000đ</span>
+                    </div>
+                    <p class="text-end text-muted small mb-4">(Đã bao gồm VAT nếu có)</p>
+
+                    <button class="btn btn-primary btn-lg w-100 fw-bold">
+                        TIẾN HÀNH THANH TOÁN
+                    </button>
+                    
+                    <!-- Chấp nhận thanh toán -->
+                    <div class="text-center mt-4">
+                        <p class="small text-muted mb-2">Chấp nhận thanh toán qua</p>
+                        <div>
+                            <i class="fab fa-cc-visa fs-3 mx-1 text-primary"></i>
+                            <i class="fab fa-cc-mastercard fs-3 mx-1 text-danger"></i>
+                            <i class="fab fa-cc-paypal fs-3 mx-1 text-info"></i>
+                            <i class="fas fa-money-bill-wave fs-3 mx-1 text-success"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Thông tin shop -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-microchip me-2"></i> NgTrieuPC</h5>
+                    <p class="small text-light">Hệ thống bán lẻ linh kiện PC, Laptop, Gear cao cấp hàng đầu. Cam kết hàng chính hãng 100%, bảo hành uy tín, giá tốt nhất thị trường.</p>
+                    <div class="mt-4">
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Liên kết -->
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="fw-bold mb-3 text-uppercase">Chính sách</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#">Chính sách bảo hành</a></li>
+                        <li class="mb-2"><a href="#">Chính sách đổi trả</a></li>
+                        <li class="mb-2"><a href="#">Chính sách giao hàng</a></li>
+                        <li class="mb-2"><a href="#">Bảo mật thông tin</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="fw-bold mb-3 text-uppercase">Hỗ trợ</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li class="mb-2"><a href="#">Hướng dẫn thanh toán</a></li>
+                        <li class="mb-2"><a href="#">Tra cứu bảo hành</a></li>
+                        <li class="mb-2"><a href="#">Góp ý, khiếu nại</a></li>
+                    </ul>
+                </div>
+
+                <!-- Liên hệ -->
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold mb-3 text-uppercase">Liên hệ</h6>
+                    <ul class="list-unstyled small text-light">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Đường Công Nghệ, Quận 1, TP. HCM</li>
+                        <li class="mb-2"><i class="fas fa-phone-alt me-2"></i> Tổng đài: 1900 xxxx</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> Email: cskh@NgTrieuPC.com</li>
+                        <li class="mb-2"><i class="fas fa-clock me-2"></i> Giờ làm việc: 8:00 - 21:30 (Cả CN & Lễ)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="mt-4 mb-3 border-light">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start small text-light">
+                    &copy; 2026 NgTrieuPC. All rights reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!-- Icon thanh toán -->
+                    <i class="fab fa-cc-visa fs-4 me-2 text-light"></i>
+                    <i class="fab fa-cc-mastercard fs-4 me-2 text-light"></i>
+                    <i class="fab fa-cc-paypal fs-4 text-light"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>
