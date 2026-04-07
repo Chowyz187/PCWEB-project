@@ -472,3 +472,72 @@ footer a:hover {
     background-color: #fff;  /* Lấp đầy khoảng trống bằng nền trắng */
     padding: 10px;           /* Thêm chút khoảng cách cho đẹp */
 }
+/* =========================================
+   10. PRODUCT DETAIL PAGE SPECIFIC STYLES
+   ========================================= */
+
+/* Khung chứa ảnh chính */
+.product-main-img {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+.product-main-img img {
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Thư viện ảnh thu nhỏ */
+.thumbnail-gallery img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    cursor: pointer;
+    background-color: var(--white);
+    transition: all 0.2s ease;
+    opacity: 0.6;
+}
+
+.thumbnail-gallery img:hover, 
+.thumbnail-gallery img.active {
+    opacity: 1;
+    border-color: var(--primary-blue) !important;
+    border-width: 2px !important;
+}
+
+/* Box Quà tặng khuyến mãi */
+.promo-box {
+    padding: 1.5rem;
+    padding-top: 2rem; /* Trừ hao phần header nổi */
+    background-color: #fffafb; /* Nền đỏ cực nhạt */
+}
+
+/* Nút Tăng/Giảm số lượng nâng cấp từ cart */
+.qty-input-group {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Định dạng tab của Bootstrap */
+.nav-tabs .nav-link {
+    color: var(--text-dark);
+    border: none;
+    border-bottom: 3px solid transparent;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+    color: var(--primary-blue);
+}
+
+.nav-tabs .nav-link.active {
+    border: none;
+    border-bottom: 3px solid var(--primary-blue);
+    color: var(--primary-blue);
+    background: transparent;
+}
